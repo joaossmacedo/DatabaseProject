@@ -1,0 +1,9 @@
+DELETE FROM public."MatchPlayers";
+DELETE FROM public."Vacancy";
+DELETE FROM public."Match";
+DELETE FROM public."Grades";
+DELETE FROM public."Field";
+DELETE FROM public."Place";
+DELETE FROM public."FieldOwner";
+DELETE FROM public."Player";
+DELETE FROM public."User";
