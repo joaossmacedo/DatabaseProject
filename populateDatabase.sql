@@ -220,6 +220,10 @@ INSERT INTO public."Vacancy"(
 	"position", matchid)
 	VALUES ('GK', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))));
+INSERT INTO public."Vacancy"(
+	"position", matchid)
+	VALUES ('GK', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))));
 				
 INSERT INTO public."Vacancy"(
 	"position", matchid, playerid)
