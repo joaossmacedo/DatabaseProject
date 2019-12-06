@@ -129,13 +129,13 @@ INSERT INTO public."Field"(
 -- Insert Match
 INSERT INTO public."Match"(
 	id, date, adminid, placeid)
-	VALUES (uuid_generate_v4(), NOW(), 
+	VALUES (uuid_generate_v4(), '2019-06-06', 
 			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 456'));
 			
 INSERT INTO public."Match"(
 	id, date, adminid, placeid)
-	VALUES (uuid_generate_v4(), NOW(), 
+	VALUES (uuid_generate_v4(), '2012-05-19', 
 			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 123'));
 			
