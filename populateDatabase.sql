@@ -138,13 +138,19 @@ INSERT INTO public."Match"(
 	VALUES (uuid_generate_v4(), '2012-05-19', 
 			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 123'));
-			
+
+INSERT INTO public."Match"(
+	id, date, adminid, placeid)
+	VALUES (uuid_generate_v4(), '1966-08-30', 
+			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 
+			(SELECT id FROM public."Place" WHERE address='Rua futebol 123'));
+
 -- Insert relationship between Match and Players
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 50, false);
+			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 50, true);
 			
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
@@ -156,7 +162,7 @@ INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 8, false);
+			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 8, true);
 			
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
@@ -168,7 +174,7 @@ INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='kevindebruyne@mancity.com'), 0, false);
+			(SELECT id FROM public."User" WHERE email='kevindebruyne@mancity.com'), 0, true);
 
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
