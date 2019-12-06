@@ -96,7 +96,7 @@ INSERT INTO public."Place"(
 
 INSERT INTO public."Field"(
 	type, price, ownerid, placeid)
-	VALUES ('Futsal', 10000, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
+	VALUES ('Futsal', 9500, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 123'));
 			
 INSERT INTO public."Place"(
@@ -105,8 +105,26 @@ INSERT INTO public."Place"(
 
 INSERT INTO public."Field"(
 	type, price, ownerid, placeid)
-	VALUES ('Campo', 15000, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
+	VALUES ('Campo', 14500, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 456'));
+			
+INSERT INTO public."Place"(
+	address)
+	VALUES ('Agamenon Magalhães');
+
+INSERT INTO public."Field"(
+	type, price, ownerid, placeid)
+	VALUES ('Futsal', 12500, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
+			(SELECT id FROM public."Place" WHERE address='Agamenon Magalhães'));
+			
+INSERT INTO public."Place"(
+	address)
+	VALUES ('Dunder Mifflin');
+
+INSERT INTO public."Field"(
+	type, price, ownerid, placeid)
+	VALUES ('Campo', 20000, (SELECT id FROM public."User" WHERE email='dono@campo.com'),
+			(SELECT id FROM public."Place" WHERE address='Dunder Mifflin'));
 
 -- Insert Match
 INSERT INTO public."Match"(
@@ -115,39 +133,75 @@ INSERT INTO public."Match"(
 			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 
 			(SELECT id FROM public."Place" WHERE address='Rua futebol 456'));
 			
+INSERT INTO public."Match"(
+	id, date, adminid, placeid)
+	VALUES (uuid_generate_v4(), NOW(), 
+			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 
+			(SELECT id FROM public."Place" WHERE address='Rua futebol 123'));
+			
 -- Insert relationship between Match and Players
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 0, false);
-			
-
-INSERT INTO public."MatchPlayers"(
-	matchid, playerid, goals, attendance)
-	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
-												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 0, false);
+			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 50, false);
 			
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 0, false);
+			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 7, false);
 			
-
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
-			(SELECT id FROM public."User" WHERE email='crisitanoronaldo@juventus.com'), 0, false);
+			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 8, false);
+			
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
+			(SELECT id FROM public."User" WHERE email='crisitanoronaldo@juventus.com'), 3, false);
 
 INSERT INTO public."MatchPlayers"(
 	matchid, playerid, goals, attendance)
 	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))),
 			(SELECT id FROM public."User" WHERE email='kevindebruyne@mancity.com'), 0, false);
+
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com'), 2, false);
 			
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'), 0, false);
+			
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='christianpulisic@chelsea.com'), 3, false);
+			
+
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='crisitanoronaldo@juventus.com'), 0, false);
+
+INSERT INTO public."MatchPlayers"(
+	matchid, playerid, goals, attendance)
+	VALUES ((SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='kevindebruyne@mancity.com'), 0, false);
+			
+
 -- Insert Vacancies
 INSERT INTO public."Vacancy"(
 	"position", matchid)
@@ -158,7 +212,27 @@ INSERT INTO public."Vacancy"(
 	"position", matchid)
 	VALUES ('GK', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
 												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 456'))));
-	
+INSERT INTO public."Vacancy"(
+	"position", matchid)
+	VALUES ('GK', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))));
+INSERT INTO public."Vacancy"(
+	"position", matchid)
+	VALUES ('GK', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))));
+				
+INSERT INTO public."Vacancy"(
+	"position", matchid, playerid)
+	VALUES ('MID', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+		   			(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com'));
+
+INSERT INTO public."Vacancy"(
+	"position", matchid, playerid)
+	VALUES ('FWD', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='masonmount@chelsea.com')
+												  AND placeid=(SELECT id FROM public."Place" WHERE address='Rua futebol 123'))),
+			(SELECT id FROM public."User" WHERE email='mosalah@barcelona.com'));
+
 INSERT INTO public."Vacancy"(
 	"position", matchid, playerid)
 	VALUES ('FWD', (SELECT id FROM public."Match" WHERE (adminid=(SELECT id FROM public."User" WHERE email='leonelmessi@barcelona.com')
